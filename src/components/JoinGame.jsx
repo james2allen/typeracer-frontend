@@ -1,23 +1,28 @@
 import { createSignal } from "solid-js";
 import socket from "../socketConfig";
 
-export default function CreateGame() {
+export default function JoinGame() {
   const [nickName, setNickName] = createSignal("");
+  const [gameID, setGameID] = createSignal("");
 
-  const onChange = (e) => {
+  const onChangeNickName = (e) => {
     setNickName(e.target.value);
+  };
+
+  const onChangeGameID = (e) => {
+    setGameID(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    socket.emit("create-game", nickName());
+    socket.emit("join-game", { nickName: nickName(), gameID: gameID() });
     console.log(nickName());
   };
 
   return (
     <div class="container flex">
       <div>
-        <h1>Create Game</h1>
+        <h1>Join Game</h1>
         <form onSubmit={onSubmit}>
           <div>
             <label for="nickName">Enter Nick Name</label>
@@ -25,8 +30,19 @@ export default function CreateGame() {
               type="text"
               name="nickName"
               value={nickName()}
-              onChange={onChange}
+              onChange={onChangeNickName}
               placeholder="Enter Nick Name"
+              class=""
+            />
+          </div>
+          <div>
+            <label for="gameID">Enter Game ID</label>
+            <input
+              type="text"
+              name="gameID"
+              value={gameID()}
+              onChange={onChangeGameID}
+              placeholder="Enter Game ID"
               class=""
             />
           </div>

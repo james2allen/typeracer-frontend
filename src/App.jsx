@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import styles from './App.module.css';
+import styles from "./App.module.css";
+import { Routes, Route } from "@solidjs/router";
+import GameMenu from "./components/GameMenu";
+import socket from "./socketConfig";
+import { onMount } from "solid-js";
 
 function App() {
+  onMount(async () => {
+    socket.on("test", (msg) => {
+      console.log(msg);
+    });
+  });
+
   return (
     <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" component={GameMenu} />
+      </Routes>
     </div>
   );
 }

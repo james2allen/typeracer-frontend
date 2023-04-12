@@ -34,14 +34,14 @@ function App() {
   });
 
   return (
-    <div class={styles.App}>
+    <div>
       <Routes>
         <Route path="/" component={GameMenu} />
         <Route path="/game/create" component={CreateGame} />
         <Route path="/game/join" component={JoinGame} />
         <Route
           path="game/:gameID"
-          element={<Typeracer gameState={gameState} />}
+          element={<Typeracer gameState={gameState()} />}
         />
       </Routes>
     </div>

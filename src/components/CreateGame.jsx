@@ -15,23 +15,23 @@ export default function CreateGame() {
   };
 
   return (
-    <div class="container flex">
-      <div>
-        <h1>Create Game</h1>
+    <div class="mt-20 flex w-screen justify-center align-middle">
+      <div class="flex flex-col rounded-lg bg-slate-300 p-12 align-middle">
+        <h1 class="text-4xl">Create Game</h1>
         <form onSubmit={onSubmit}>
-          <div>
-            <label for="nickName">Enter Nick Name</label>
+          <div class="mt-10 flex flex-col align-middle">
+            <label for="nickName">Enter Name</label>
             <input
               type="text"
               name="nickName"
               value={nickName()}
               onChange={onChange}
-              placeholder="Enter Nick Name"
-              class=""
+              placeholder="Enter Name"
+              class="px-2 py-1"
             />
           </div>
           <button
-            class="mb-2 mr-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="mb-2 mr-2 mt-6 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="submit"
             onSubmit={onSubmit}
           >
